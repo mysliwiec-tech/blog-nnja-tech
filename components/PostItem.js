@@ -1,15 +1,19 @@
+import { Date, RichText } from 'prismic-reactjs'
+import Link from 'next/link'
+import * as moment from 'moment'
+
 const PostItem = (props) => (
     <div className="post">
-        <p className="time">Wednesday, February 6th 2019 (about 9 hours ago)</p>
-        <h2>Test</h2>
-        <p className="description">Description</p>
-        <p className="read_more">Read More</p>
+        <p className="time">{moment(Date(props.post.first_publication_date)).format("LLLL")} ({moment(Date(props.post.first_publication_date)).fromNow()})</p>
+        <h2>{RichText.asText(props.post.data.title)}</h2>
+        <p className="description">{RichText.asText(props.post.data.description)}</p>
+        <Link href={'/post/' + props.post.uid} as={'/post/' + props.post.uid}><a className="read_more">Read More</a></Link>
         <style jsx>{`
             .post {
                 color: white;
                 margin: 0px;
                 border-bottom: 1px solid #BBB;
-                padding: 64px 0px;
+                padding: 16px 0px;
             }
 
             .time {
@@ -25,6 +29,7 @@ const PostItem = (props) => (
             .read_more {
                 text-transform: uppercase;
                 margin-bottom: 0px;
+                color: white;
             }
         `}</style>
     </div>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 const Header = () => (
   <div>
     <div className="separated">
-      <span id="logo">nnja.tech</span>
+      <Link href="/"><a id="logo">nnja.tech</a></Link>
       <nav>
         <Link href="/">
           <a className="menuLinkStyle">Home</a>
@@ -19,10 +19,12 @@ const Header = () => (
         font-size: 32px;
         font-family: 'Major Mono Display', monospace;
         font-weight: bold;
+        text-decoration: none;
+        color: white;
       }
 
       .separated {
-        padding: 10px 0px;
+        padding: 16px 0px;
         border-bottom: 1px solid #DDD;
       }
 
@@ -37,7 +39,7 @@ const Header = () => (
         line-height: 35px;
       }
 
-      a {
+      a:not(#logo) {
         color: white;
         text-transform: uppercase;
       }
