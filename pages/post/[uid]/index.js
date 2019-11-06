@@ -17,6 +17,9 @@ const Post = props => {
 }
 
 Post.getInitialProps = async context => {
+    if (context.res) {
+        context.res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
+    }
     const response = await client.getByUID('post', context.query.uid)
     return {post: response}
 }
