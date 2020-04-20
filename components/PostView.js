@@ -4,7 +4,7 @@ import * as moment from 'moment'
 const PostView = (props) => {
     return (
         <div className="post">
-            <p className="time">{moment(Date(props.post.first_publication_date)).format("LLLL")} ({moment(Date(props.post.first_publication_date)).fromNow()})</p>
+            <p className="time">{moment(Date(props.post.first_publication_date)).format("LLLL")}</p>
             <h2>{RichText.asText(props.post.data.title)}</h2>
             <p className="description">{RichText.asText(props.post.data.description)}</p>
             <p>{RichText.render(props.post.data.content)}</p>

@@ -11,13 +11,9 @@ const Index = props => (
     </Layout>
 )
 
-Index.getInitialProps = async context => {
-    if (context.res) {
-        context.res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
-    }
+export async function getStaticProps() {
     const response = await client.getSingle('about');
-    console.log(response);
-    return {content: response.data.picture }
+    return { props: {content: response.data.picture } }
 }
 
 export default Index

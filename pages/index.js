@@ -3,7 +3,6 @@ import Layout from '../components/MyLayout'
 import PostItem from '../components/PostItem'
 import Paginator from '../components/Paginator'
 import { client } from '../prismic-configuration'
-
 import Prismic from 'prismic-javascript'
 
 const Index = props => (
@@ -18,20 +17,13 @@ const Index = props => (
     </Layout>
 )
 
-Index.getInitialProps = async context => {
-    let page = 1;
-    if (context.res) {
-        context.res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate')
-    }
-    if(context.query.page != 'undefined') {
-        page = context.query.page;
-    }
+export async function getStaticProps() {
     const response = await client.query(
         Prismic.Predicates.at('document.type', 'post'),
-        { orderings : '[document.first_publication_date desc]', pageSize: 20, page: page },
+        { orderings : '[document.first_publication_date desc]', pageSize: 20, page: 1},
 
     )
-    return {posts: response.results, page: response.page, total_pages: response.total_pages}
+    return { props: { posts: response.results, page: response.page, total_pages: response.total_pages } }
 }
 
 export default Index
