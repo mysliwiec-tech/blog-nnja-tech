@@ -2,7 +2,6 @@
     "version": 2,
     "name": "nnja-blog",
     "alias": ["nnja.tech", "blog.nnja.tech"],
-    "regions": ["all"],
     "builds": [
       { "src": "package.json", "use": "@now/next"}
     ]
