@@ -13,7 +13,7 @@ const Header = () => (
         </Link>
       </nav>
     </div>
-    <div className="separated">Welcome on NNJA.tech, a blog about ServiceNow, cloud, decentralized systems and Linux.</div>
+    <div className="separated">Welcome on NNJA.tech, a blog about cloud, decentralized systems, smart home solutions and Linux.</div>
     <style jsx>{`
       #logo {
         font-size: 32px;
