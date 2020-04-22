@@ -3,17 +3,15 @@ import * as moment from 'moment'
 import Code from './sections/code'
 
 const PostView = (props) => {
-    // console.log(props.post.data)
     const slices = props.post.data.body;
     return (
         <div className="post">
             <p className="time">{moment(Date(props.post.first_publication_date)).format("LLLL")}</p>
             <h2>{RichText.asText(props.post.data.title)}</h2>
             <picture>
-                <source media="(max-width: 400px)" srcSet={props.post.data.cover_image.mobile.url} />
-                <source media="(max-width: 900px)" srcSet={props.post.data.cover_image.tablet.url} />
-                <source srcSet={props.post.data.cover_image.url} />
-                <img src={props.post.data.cover_image.url} alt={props.post.data.cover_image.url} />
+                <source style={{maxWidth: "100%", height: "auto"}} media="(max-width: 500px)" srcSet={props.post.data.cover_image.mobile.url+'&mask=corners&corner-radius=5,5,5,5'} />
+                <source style={{maxWidth: "100%", height: "auto"}} srcSet={props.post.data.cover_image.url+'&mask=corners&corner-radius=5,5,5,5'} />
+                <img style={{maxWidth: "100%", height: "auto"}} src={props.post.data.cover_image.url+'&mask=corners&corner-radius=5,5,5,5'} alt={props.post.data.cover_image.url} />
             </picture>
             <p className="description">{RichText.asText(props.post.data.description)}</p>
             <p>{RichText.render(props.post.data.content)}</p>

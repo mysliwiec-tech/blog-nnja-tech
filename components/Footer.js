@@ -1,6 +1,6 @@
 const Footer = () => (
     <div>
-    Dariusz Myśliwiec — Copyright © 2019 All rights reserved.
+    Dariusz Myśliwiec — Copyright © 2020 All rights reserved.
     <style jsx>{`
         div {
             padding: 10px 0px 10px 0px;
