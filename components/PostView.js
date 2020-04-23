@@ -1,6 +1,6 @@
 import { Date, RichText } from 'prismic-reactjs'
 import * as moment from 'moment'
-import Code from './sections/code'
+import Code from './sections/Code'
 
 const PostView = (props) => {
     const slices = props.post.data.body;
@@ -14,12 +14,14 @@ const PostView = (props) => {
                 <img style={{maxWidth: "100%", height: "auto"}} src={props.post.data.cover_image.url+'&mask=corners&corner-radius=5,5,5,5'} alt={props.post.data.cover_image.url} />
             </picture>
             <p className="description">{RichText.asText(props.post.data.description)}</p>
-            <p>{RichText.render(props.post.data.content)}</p>
             {slices.map(function(slice, index) {
                 if (slice.slice_type === 'paragraph') {
-                    return <p>{RichText.render(slice.primary.text)}</p>
+                    return (<>
+                        <>{RichText.render(slice.primary.header) || ''}</>
+                        <>{RichText.render(slice.primary.text)}</>
+                    </>)
                 } else if (slice.slice_type === 'code') {
-                    return <Code gist={RichText.asText(slice.primary.text)} height={slice.primary.height} key={index}></Code>
+                    return <Code data={slice.primary} key={index}></Code>
                 } else if (slice.slice_type === 'image_with_caption') {
                     return <img src={slice.primary.image.url} key={index}/>
                 }
