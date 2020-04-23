@@ -6,6 +6,11 @@ const PostItem = (props) => (
     <div className="post">
         <p className="time">{moment(Date(props.post.first_publication_date)).format("LLLL")}</p>
         <h2>{RichText.asText(props.post.data.title)}</h2>
+        <picture>
+            <source style={{maxWidth: "100%", height: "auto"}} media="(max-width: 500px)" srcSet={props.post.data.cover_image.mobile.url+'&mask=corners&corner-radius=5,5,5,5'} />
+            <source style={{maxWidth: "100%", height: "auto"}} srcSet={props.post.data.cover_image.url+'&mask=corners&corner-radius=5,5,5,5'} />
+            <img style={{maxWidth: "100%", height: "auto"}} src={props.post.data.cover_image.url+'&mask=corners&corner-radius=5,5,5,5'} alt={props.post.data.cover_image.url} />
+        </picture>
         <p className="description">{RichText.asText(props.post.data.description)}</p>
         <Link href='/post/[uid]' as={'/post/' + props.post.uid}><a className="read_more">Read More</a></Link>
         <style jsx>{`
