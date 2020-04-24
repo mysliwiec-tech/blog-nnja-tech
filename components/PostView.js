@@ -7,12 +7,12 @@ const PostView = (props) => {
     return (
         <div className="post">
             <p className="time">{moment(Date(props.post.first_publication_date)).format("LLLL")}</p>
-            <h2>{RichText.asText(props.post.data.title)}</h2>
             <picture>
                 <source style={{maxWidth: "100%", height: "auto"}} media="(max-width: 500px)" srcSet={props.post.data.cover_image.mobile.url+'&mask=corners&corner-radius=5,5,5,5'} />
                 <source style={{maxWidth: "100%", height: "auto"}} srcSet={props.post.data.cover_image.url+'&mask=corners&corner-radius=5,5,5,5'} />
                 <img style={{maxWidth: "100%", height: "auto"}} src={props.post.data.cover_image.url+'&mask=corners&corner-radius=5,5,5,5'} alt={props.post.data.cover_image.url} />
             </picture>
+            <h2>{RichText.asText(props.post.data.title)}</h2>
             <p className="description">{RichText.asText(props.post.data.description)}</p>
             {slices.map(function(slice, index) {
                 if (slice.slice_type === 'paragraph') {
@@ -31,7 +31,7 @@ const PostView = (props) => {
                     color: white;
                     margin: 0px;
                     border-bottom: 1px solid #BBB;
-                    padding: 16px 0px;
+                    padding: 40px 0px;
                 }
 
                 .time {
