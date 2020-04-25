@@ -1,16 +1,14 @@
 import Head from 'next/head';
 import Layout from '../../components/MyLayout'
 import PostView from '../../components/PostView'
-import { client } from '../../prismic-configuration'	
-import Prismic from 'prismic-javascript'
-
-import { RichText } from 'prismic-reactjs'
+import matter from 'gray-matter'
+const glob = require('glob')
 
 const Post = props => {
     return (
         <Layout>
             <Head>
-                <title>NNJA.tech - Blog - {RichText.asText(props.post.data.title)}</title>
+                <title>NNJA.tech - Blog - {props.post.metadata.title}</title>
             </Head>
             <PostView post={props.post}/>
         </Layout>
@@ -18,16 +16,38 @@ const Post = props => {
 }
 
 export async function getStaticPaths() {
-    const response = await client.query(
-        Prismic.Predicates.at('document.type', 'post')
+    //get all .md files in the posts dir
+    const posts = glob.sync('posts/*.md')
+
+    //remove path and extension to leave filename only
+    const postsIds = posts.map(file =>
+        file
+        .replace(/^.*[\\\/]/, '') //remove everything before last "/"
+        .slice(11, -3)
     )
-    const paths = response.results.map(post => `/post/${post.uid}`)
+
+    const paths = postsIds.map(postId => `/post/${postId}`)
     return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
-    const response = await client.getByUID('post', params.uid);
-    return { props: { post: response } }
+    const posts = glob.sync('posts/*.md');
+    let post = posts.filter(filename => filename.endsWith(`${params.uid}.md`))
+    post.length == 1 ? post = post[0] : ''
+
+    const content = await import(`../../${post}`)
+    const data = matter(content.default)
+    console.log(data)
+
+    return {
+        props: {
+            post: {
+                metadata: data.data,
+                body: data.content,
+            }
+        },
+    }
+    // return { props: { post: response } }
 }
 
 export default Post

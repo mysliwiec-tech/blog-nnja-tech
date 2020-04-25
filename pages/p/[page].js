@@ -1,6 +1,6 @@
 import Index from '../index';
-import { client } from '../../prismic-configuration'
-import Prismic from 'prismic-javascript'
+// import { client } from '../../prismic-configuration'
+// import Prismic from 'prismic-javascript'
 
 const IndexPage = Index
 
