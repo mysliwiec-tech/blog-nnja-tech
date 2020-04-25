@@ -1,6 +1,5 @@
-import { Date, RichText } from 'prismic-reactjs'
 import * as moment from 'moment'
-import Code from './sections/Code'
+// import Code from './sections/Code'
 
 const PostView = (props) => {
     console.log(props)
