@@ -2,10 +2,7 @@ const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 
 module.exports = 
-withPlugins(
-  [optimizedImages, {
-    optimizeImagesInDev: true,
-  }],
+withPlugins([
   {
     webpack: function(config) {
       config.module.rules.push({
@@ -14,5 +11,8 @@ withPlugins(
       })
       return config
     },
-  }
-)
+  },
+  [optimizedImages, {
+    optimizeImagesInDev: true,
+  }],
+])

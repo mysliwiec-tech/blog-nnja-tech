@@ -3,7 +3,6 @@ import Layout from '../components/MyLayout'
 import PostItem from '../components/PostItem'
 import Paginator from '../components/Paginator'
 import matter from 'gray-matter'
-import ReactMarkdown from 'react-markdown'
 
 const Index = props => (
     <Layout>
