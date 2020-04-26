@@ -37,7 +37,6 @@ export async function getStaticProps({ params }) {
 
     const content = await import(`../../${post}`)
     const data = matter(content.default)
-    console.log(data)
 
     return {
         props: {
@@ -47,7 +46,6 @@ export async function getStaticProps({ params }) {
             }
         },
     }
-    // return { props: { post: response } }
 }
 
 export default Post
