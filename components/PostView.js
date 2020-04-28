@@ -6,7 +6,11 @@ const PostView = (props) => {
     return (
         <div className="post">
             <PostIntro post={props.post.metadata}/>
-            <ReactMarkdown source={props.post.body} transformImageUri={uri => require(`../public/${uri}?resize&size=650`)} />
+            <ReactMarkdown source={props.post.body} 
+                transformImageUri={
+                    uri => require(`../public/${uri}?resize&size=650`)
+                }
+            />
             <style jsx>{`
                 .post {
                     color: white;

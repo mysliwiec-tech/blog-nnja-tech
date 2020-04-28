@@ -39,7 +39,7 @@ export async function getStaticProps() {
           }
         })
         return data
-      })(require.context('../posts', true, /\.md$/))
+      })(require.context('../posts', true, /\.md$/)).reverse()
 
       return { props: { posts: posts , page: 1, total_pages: Math.ceil(posts.length/20) }}
 }
