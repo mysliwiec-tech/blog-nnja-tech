@@ -5,6 +5,8 @@ const Paginator = props => {
     const currentPage = Number(props.page);
     const totalPages = Number(props.total_pages);
     
+    if(totalPages <= 1) return <></>
+
     return (
         <div>
             <ul>
