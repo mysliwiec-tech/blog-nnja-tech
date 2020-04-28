@@ -3,7 +3,7 @@ import * as moment from 'moment'
 const PostIntro = (props) => {
     return (
     <>
-        <p className="time">{moment(Date(props.post.created_on)).format("Do MMMM YYYY")}</p>
+        <p className="time">{moment(props.post.created_on).format("Do MMMM YYYY")}</p>
         <div style={{width: "100%", maxHeight: "300px", overflow: "hidden", borderRadius: "5px"}}>
             <picture>
                 {/* WebP */}
