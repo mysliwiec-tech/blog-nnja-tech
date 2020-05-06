@@ -10,8 +10,8 @@ const Index = props => (
         <Head>
             <title>NNJA.tech - Blog</title>
         </Head>
-        {props.posts.map((post) => 
-            <PostItem post={post}/>
+        {props.posts.map((post, i) => 
+            <PostItem post={post} key={i}/>
         )}
         <Paginator page={props.page} total_pages={props.total_pages}/>
     </Layout>
