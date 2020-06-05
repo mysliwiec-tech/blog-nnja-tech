@@ -19,6 +19,17 @@ const PostView = (props) => {
                     padding: 40px 0px;
                 }
             `}</style>
+            <style global jsx>{`
+                a:link, a:hover, a:active {
+                    color: white;
+                }
+                a:visited {
+                    color: #CCCCCC; 
+                }
+                code {
+                    
+                }
+            `}</style>
         </div>
     )
 }

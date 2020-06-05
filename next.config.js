@@ -6,9 +6,6 @@ const nextConfig = {
   webpack: function(config) {
     config.module.rules.push({
       test: /\.md$/,
-      include: [
-        path.resolve(__dirname, 'posts')
-      ],
       use: 'raw-loader',
     })
     return config

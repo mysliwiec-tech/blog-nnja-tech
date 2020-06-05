@@ -3,8 +3,8 @@ title: Share your first file over IPFS
 description: Let's build a truly decentralized Internet from the ground up and share our first file with the world
 author: Dariusz Myśliwiec
 created_on: '2020-05-06'
-updated_on: '2020-04-26'
-cover_image: images/ipfs-world.jpg
+updated_on: '2020-05-06'
+cover_image: images/cover/ipfs-world.jpg
 cover_image_author: 'John Smith'
 ---
 ## What is IPFS?
